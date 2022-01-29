@@ -71,7 +71,7 @@ body {
 }
 
 .search-bar.active {
-  margin-left: 250px;
+  margin-left: 110px;
   transition: 350ms;
 }
 
