@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Client from "./pages/Clients";
+import Coworkers from "./pages/Coworkers";
+import Analytics from "./pages/Analytics";
+import Header from "./components/Header";
 
 function App() {
+  const [showLinks, setShowLinks] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Navbar showLinks={showLinks} setShowLinks={setShowLinks} />
+        <Header showLinks={showLinks} />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/clients" element={<Client />} />
+          <Route path="/coworkers" element={<Coworkers />} />
+          <Route path="/analytics" element={<Analytics />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
